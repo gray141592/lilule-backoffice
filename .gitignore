@@ -5,3 +5,5 @@ web
 windows
 build
 .DS_Store
+.packages
+.flutter-plugins*
