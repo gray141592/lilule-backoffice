@@ -1,6 +1,6 @@
 import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuController.dart';
-import 'package:admin/screens/main/main_layout.dart';
+import 'package:admin/layouts/dashboard_layout.dart';
 import 'package:admin/routes_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,13 +25,10 @@ class MyApp extends StatelessWidget {
         canvasColor: secondaryColor,
       ),
       navigatorKey: navigatorKey,
-      builder: (context, child) => MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (context) => MenuController()),
-        ],
-        child: MainLayout(child: child == null ? const Text('Error') : child)
-      ),
-      initialRoute: '/files',
+      builder: (context, child) => MultiProvider(providers: [
+        ChangeNotifierProvider(create: (context) => MenuController()),
+      ], child: DashboardLayout(child: child == null ? const Text('Error') : child)),
+      initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

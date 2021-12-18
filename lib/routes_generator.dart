@@ -1,5 +1,8 @@
+import 'package:admin/screens/task/task.dart';
 import 'package:flutter/material.dart';
-import 'package:admin/screens/dashboard/dashboard_screen.dart';
+import 'package:admin/screens/dashboard/dashboard.dart';
+import 'package:admin/screens/transactions/transactions.dart';
+import 'package:admin/layouts/dashboard_screen_view.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -8,10 +11,24 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => DashboardScreen());
-      case '/files':
         return MaterialPageRoute(
-          builder: (_) => MyPage(title: 'Druga starnica'),
+            builder: (_) => DashboardScreenView(
+                  pageTitle: 'Dashboard',
+                  pageChild: DashboardScreen(),
+                ));
+      case '/transactions':
+        return MaterialPageRoute(
+          builder: (_) => DashboardScreenView(
+            pageTitle: 'Transactions',
+            pageChild: TransactionsScreen(),
+          ),
+        );
+      case '/task':
+        return MaterialPageRoute(
+          builder: (_) => DashboardScreenView(
+            pageTitle: 'Task',
+            pageChild: TaskScreen(),
+          ),
         );
       default:
         // If there is no such named route in the switch statement, e.g. /third
@@ -23,29 +40,12 @@ class RouteGenerator {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Error'),
+          title: Text('Something went wrong'),
         ),
         body: Center(
-          child: Text('ERROR'),
+          child: Text('We are terribly sorry but we can\'t process your request!'),
         ),
       );
     });
-  }
-}
-
-class MyPage extends StatelessWidget {
-  final String title;
-  MyPage({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Text("page title: $title")],
-        ),
-      ),
-    );
   }
 }
