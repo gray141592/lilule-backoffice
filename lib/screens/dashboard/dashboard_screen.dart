@@ -1,4 +1,3 @@
-import 'package:admin/main.dart';
 import 'package:admin/responsive.dart';
 import 'package:admin/screens/dashboard/components/my_fields.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +17,6 @@ class DashboardScreen extends StatelessWidget {
         child: Column(
           children: [
             Header(),
-            TextButton(
-                child: Text("klikni me"),
-                onPressed: () {
-                  navigatorKey.currentState?.pushNamed('/b');
-                }),
             SizedBox(height: defaultPadding),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
