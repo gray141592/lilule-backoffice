@@ -11,21 +11,24 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(
-            builder: (_) => DashboardScreenView(
+        return PageRouteBuilder(
+          settings: settings,
+            pageBuilder: (_, a, __) => DashboardScreenView(
                   pageTitle: 'Dashboard',
                   pageChild: DashboardScreen(),
                 ));
       case '/transactions':
-        return MaterialPageRoute(
-          builder: (_) => DashboardScreenView(
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, a, __) => DashboardScreenView(
             pageTitle: 'Transactions',
             pageChild: TransactionsScreen(),
           ),
         );
       case '/task':
-        return MaterialPageRoute(
-          builder: (_) => DashboardScreenView(
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, a, __) => DashboardScreenView(
             pageTitle: 'Task',
             pageChild: TaskScreen(),
           ),
@@ -37,7 +40,7 @@ class RouteGenerator {
   }
 
   static Route<dynamic> _errorRoute() {
-    return MaterialPageRoute(builder: (_) {
+    return PageRouteBuilder(pageBuilder: (_, a, __) {
       return Scaffold(
         appBar: AppBar(
           title: Text('Something went wrong'),

@@ -7,3 +7,4 @@ build
 .DS_Store
 .packages
 .flutter-plugins*
+.dart_tool/
